@@ -324,6 +324,7 @@ class DroneSim:
         if self._tello is not None:
             try:
                 self._tello.land()
+                self._tello.streamoff()
                 self._tello.end()
             except:
                 pass
@@ -347,14 +348,6 @@ class DroneSim:
         self._tello.takeoff()
         self._position = np.zeros(3)
         self._rotation = quaternion.quaternion(1, 0, 0, 0)
-        self._t_start = time.time()
-        self._image_counter = 0
-
-    def stop(self) -> None:
-        self._tello.streamoff()
-        self._tello.land()
-        self._tello.end()
-        self._tello = None
 
     def __enter__(self):
         return self
