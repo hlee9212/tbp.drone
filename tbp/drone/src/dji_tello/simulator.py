@@ -344,7 +344,7 @@ class DroneSim:
         self._image_counter = 0
 
         # Take off, and initialize position, rotation, etc.
-        self.actuate_takeoff(None)
+        self._tello.takeoff()
         self._position = np.zeros(3)
         self._rotation = quaternion.quaternion(1, 0, 0, 0)
         self._t_start = time.time()
